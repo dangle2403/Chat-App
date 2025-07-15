@@ -1,3 +1,4 @@
+import cloudinary from "../lib/cloudinary";
 import Message from "../models/message.model";
 import User from "../models/user.model";
 
@@ -31,3 +32,32 @@ export const getMessages= async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+export const sendMessage = async (req, res) => {
+  try {
+    const { text, image } = req.body;
+    const { id: receiverId } = req.params;
+    const myId = req.user._id;
+
+    let imageUrl;
+    if (image){
+      const base64Image = await cloudinary.uploader.upload(image);
+      imageUrl = base64Image.secure_url;
+    }
+
+    const newMessage = new Message({
+      sender: myId,
+      receiver: receiverId,
+      text,
+      image: imageUrl
+    });
+
+    await newMessage.save();
+    // Todo: realtime functionality to send message to the receiver
+
+    res.status(201).json(newMessage);
+  } catch (error) {
+    console.error('Error sending message:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
