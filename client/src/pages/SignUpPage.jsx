@@ -10,7 +10,7 @@ import {
   Loader,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/AuthImagePattern.jsx";
+import AuthImagePattern from "../components/authImagePattern.jsx";
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {
@@ -121,7 +121,7 @@ const SignUpPage = () => {
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-2 flex items-center z-8"
+                  className="absolute inset-y-0 right-2 flex items-center"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
@@ -151,7 +151,7 @@ const SignUpPage = () => {
 
           <div className="text-center">
             <p className="text-base-content/60">
-              Already have an account?
+              Already have an account?{" "}
               <Link to="/login" className="link link-primary">
                 Sign in
               </Link>

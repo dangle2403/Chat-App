@@ -5,6 +5,6 @@ import { updateProfilePicture } from '../controllers/profile.controller.js';
 
 const profileRoutes = Router();
 
-profileRoutes.put("/update-profile", protectRoute, updateProfilePicture);
+profileRoutes.put("/update-picture", protectRoute, updateProfilePicture);
 
 export default profileRoutes;
