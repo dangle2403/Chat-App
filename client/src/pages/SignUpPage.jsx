@@ -10,7 +10,7 @@ import {
   Loader,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/authImagePattern.jsx";
+import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {

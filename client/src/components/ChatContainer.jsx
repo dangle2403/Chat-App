@@ -5,17 +5,40 @@ import MessageInput from "./MessageInput.jsx";
 import MessageSkeleton from "./skeletons/MessageSkeleton.jsx";
 import { useAuthStore } from "../../store/useAuthStore.js";
 import { formatDate } from "../lib/utils.js";
+import { useRef } from "react";
 
 const ChatContainer = () => {
-  const { messages, getMessages, isMessageLoading, selectedUser } =
-    useChatStore();
+  const {
+    messages,
+    getMessages,
+    isMessageLoading,
+    selectedUser,
+    subscribeToMessages,
+    unsubscribeMessages,
+  } = useChatStore();
   const { authUser } = useAuthStore();
+  const messagesEndRef = useRef(null);
 
+  
   useEffect(() => {
     if (selectedUser?._id) {
       getMessages(selectedUser._id);
+
+      subscribeToMessages();
+      return () => unsubscribeMessages();
     }
-  }, [selectedUser?._id, getMessages]);
+  }, [
+    selectedUser?._id,
+    getMessages,
+    subscribeToMessages,
+    unsubscribeMessages,
+  ]);
+
+  useEffect(() => {
+    if (messagesEndRef.current && messages){
+      messagesEndRef.current.scrollIntoView({behavior: "smooth"});
+    }
+  }, [messages]);
 
   if (isMessageLoading)
     return (
@@ -38,6 +61,7 @@ const ChatContainer = () => {
             className={`chat ${
               message.sender === authUser._id ? "chat-end" : "chat-start"
             }`}
+            ref={messagesEndRef}
           >
             <div className="chat-image avatar">
               <div className="size-10 rounded-full">
@@ -63,7 +87,7 @@ const ChatContainer = () => {
             <div className="chat-bubble flex flex-col">
               {message.image && (
                 <img
-                  src={message.image} 
+                  src={message.image}
                   alt="Attachment"
                   className="sm:max-w-[200px] rounded-md mb-2"
                 />

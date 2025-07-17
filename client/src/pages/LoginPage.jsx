@@ -10,7 +10,7 @@ import {
   Loader,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/authImagePattern.jsx";
+import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import toast from "react-hot-toast";
 
 const SignInPage = () => {
@@ -24,7 +24,7 @@ const SignInPage = () => {
   const { isLogging, login } = useAuthStore();
 
   const validateForm = () => {
-    const {  email, password } = formData;
+    const { email, password } = formData;
     if (!email.trim()) return toast.error("Email is required");
     if (!/\S+@\S+\.\S+/.test(email)) return toast.error("Invalid email format");
     if (!password.trim()) return toast.error("Password is required");
@@ -53,9 +53,7 @@ const SignInPage = () => {
                 <MessageSquare className="size-6 text-primary" />
               </div>
               <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">
-                Sign in to your account
-              </p>
+              <p className="text-base-content/60">Sign in to your account</p>
             </div>
           </div>
           {/* form */}
@@ -117,7 +115,6 @@ const SignInPage = () => {
               className="btn btn-primary w-full"
               disabled={isLogging}
             >
-              
               {isLogging ? (
                 <>
                   <Loader className="size-5 animate-spin" />

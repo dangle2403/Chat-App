@@ -1,8 +1,13 @@
-import router from 'express';
-import { signup, login, logout, checkAuth } from '../controllers/auth.controller.js';
-import { protectRoute } from '../middlewares/auth.middleware.js';
+import { Router } from "express";
+import {
+  signup,
+  login,
+  logout,
+  checkAuth,
+} from "../controllers/auth.controller.js";
+import { protectRoute } from "../middlewares/auth.middleware.js";
 
-const authRouter = router();
+const authRouter = Router();
 
 authRouter.post("/signup", signup);
 
