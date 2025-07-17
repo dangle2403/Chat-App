@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import messageRouter from "./routes/message.route.js";
 
 dotenv.config();
 const app = express();
@@ -21,7 +22,7 @@ app.use(
 );
 
 app.use("/api/auth", authRouter);
-app.use("/api/message", authRouter);
+app.use("/api/messages", messageRouter);
 app.use("/api/profile", profileRoutes);
 
 app.listen(PORT, () => {
