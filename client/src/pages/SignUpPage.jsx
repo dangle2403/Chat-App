@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import { useAuthStore } from "../../store/useAuthStore";
 import {
   MessageSquare,
@@ -159,10 +158,6 @@ const SignUpPage = () => {
           </div>
         </div>
       </div>
-      <AuthImagePattern
-        title="Join our community"
-        subtitle="Connect with friends and the world around you on Chat App."
-      />
     </div>
   );
 };
