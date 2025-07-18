@@ -10,7 +10,6 @@ import {
   Loader,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import toast from "react-hot-toast";
 
 const SignInPage = () => {
@@ -136,10 +135,6 @@ const SignInPage = () => {
           </div>
         </div>
       </div>
-      <AuthImagePattern
-        title="Welcome Back"
-        subtitle="Sign in to continue chatting with your friends and family."
-      />
     </div>
   );
 };
