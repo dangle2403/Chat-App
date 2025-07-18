@@ -18,7 +18,10 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173" || "https://chat-app-1-6ky1.onrender.com",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? ["https://chat-app-1-6ky1.onrender.com"]
+        : "http://localhost:5173",
     credentials: true,
   })
 );

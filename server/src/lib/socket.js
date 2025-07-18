@@ -9,7 +9,7 @@ const io = new Server(server, {
   cors: {
     origin:
       process.env.NODE_ENV === "production"
-        ? ["https://your-deployed-domain.com"] // Replace with your actual domain
+        ? ["https://chat-app-1-6ky1.onrender.com"]
         : "http://localhost:5173",
     credentials: true,
   },
