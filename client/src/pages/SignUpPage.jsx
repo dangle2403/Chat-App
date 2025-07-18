@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthImagePattern from "../components/AuthImagePattern";
+import AuthImagePattern from "../components/AuthImagePattern.jsx";
 import { useAuthStore } from "../../store/useAuthStore";
 import {
   MessageSquare,
