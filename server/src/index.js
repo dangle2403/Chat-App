@@ -10,9 +10,8 @@ import { app, server } from "./lib/socket.js";
 import path from "path";
 
 dotenv.config();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 const __dirname = path.resolve();
-
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
@@ -28,14 +27,13 @@ app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRouter);
 app.use("/api/profile", profileRoutes);
 
-if(process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
-  
-  app.get("*", (req, res) => {
+
+  app.get("/{*splat}", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/dist/index.html"));
   });
-
-};
+}
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
