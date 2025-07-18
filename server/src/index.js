@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173" || "https://chat-app-1-6ky1.onrender.com",
     credentials: true,
   })
 );
@@ -30,7 +30,7 @@ app.use("/api/profile", profileRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
 
-  app.get("*", (req, res) => {
+  app.get("/{*splat}", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/dist/index.html"));
   });
 }
