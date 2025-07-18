@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useChatStore } from "../../store/useChatStore.js";
-import ChatHeader from "./ChatHeader.jsx";
-import MessageInput from "./MessageInput.jsx";
-import MessageSkeleton from "./skeletons/MessageSkeleton.jsx";
-import { useAuthStore } from "../../store/useAuthStore.js";
-import { formatDate } from "../lib/utils.js";
+import { useChatStore } from "../../store/useChatStore";
+import ChatHeader from "./ChatHeader";
+import MessageInput from "./MessageInput";
+import MessageSkeleton from "./skeletons/MessageSkeleton";
+import { useAuthStore } from "../../store/useAuthStore";
+import { formatDate } from "../lib/utils";
 import { useRef } from "react";
 
 const ChatContainer = () => {
@@ -19,7 +19,6 @@ const ChatContainer = () => {
   const { authUser } = useAuthStore();
   const messagesEndRef = useRef(null);
 
-  
   useEffect(() => {
     if (selectedUser?._id) {
       getMessages(selectedUser._id);
@@ -35,8 +34,8 @@ const ChatContainer = () => {
   ]);
 
   useEffect(() => {
-    if (messagesEndRef.current && messages){
-      messagesEndRef.current.scrollIntoView({behavior: "smooth"});
+    if (messagesEndRef.current && messages) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
