@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthStore } from "../../store/useAuthStore.jsx";
+import { useAuthStore } from "../../store/useAuthStore";
 import {
   MessageSquare,
   User,
